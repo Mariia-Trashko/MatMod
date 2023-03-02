@@ -11,10 +11,16 @@ min(dat12$Hum)
 # 1.52
 min(dat12$PhOx)
 # 1
+max(dat12$Hum)
+# 2.52
+max(dat12$PhOx)
+# 26
+# Расчет вариации
 varH= var(dat12$Hum); varH
 # 0.05512857
 varP= var(dat12$PhOx); varP
 # 39.43492
+# Расчет СрАр
 mH = mean(dat12$Hum); mH
 # 2.008333
 mP = mean(dat12$PhOx); mP
@@ -23,6 +29,7 @@ sum(dat12$Hum)/length(dat12$Hum)
 # 2.008333
 sum(dat12$PhOx)/length(dat12$PhOx)
 # 14.77778
+# Расчет стандартного отклонения
 sH=sd(dat12$Hum); sH
 # 0.2347947
 sP=sd(dat12$PhOx); sP
@@ -31,10 +38,12 @@ sqrt(varH)
 # 0.2347947
 sqrt(varP)
 # 6.279723
+# Расчет ковариации
 vH=100*sH/mH; vH
 # 11.69102
 vP=100*sP/mP; vP
 # 42.49437
+# Вывод данных с помощью функции
 summary(dat12)
 # Hum             PhOx      
 # Min.   :1.520   Min.   : 1.00  
@@ -43,25 +52,31 @@ summary(dat12)
 # Mean   :2.008   Mean   :14.78  
 # 3rd Qu.:2.163   3rd Qu.:19.50  
 # Max.   :2.520   Max.   :26.00  
+# Вычисление медианы
 quantile(dat12$Hum,.50)
 # 50% 
 # 2.03
 quantile(dat12$PhOx,.50)
 # 50% 
 # 14.5 
+# Вычисление соответствующих квантилей
 quantile(dat12$Hum, c(.32, .57, .98))
 # 32%    57%    98% 
 # 1.9160 2.0395 2.4360 
 quantile(dat12$PhOx, c(.32, .57, .98))
 # 32%  57%  98% 
 # 12.2 15.0 25.3 
+# Создание вектора квантилей
 kvart=c(0,0.1,0.25,0.5,0.75,0.9,1)
+# Вычисление значений квантилей и построение графиков
 resH=quantile(dat12$Hum, kvart)
 plot(resH, kvart, type= "b", main = "График квантилей", xlab ="Содержание гумуса", ylab ="квантили", col ="red")
 resP=quantile(dat12$PhOx, kvart)
 plot(resP, kvart, type= "b", main = "График квантилей", xlab ="Содержание оксида фосфора", ylab ="квантили", col ="red")
+# Вычисление частот
 Y=1: length(dat12$Hum); Y
 Y=Y/length(dat12$Hum); Y
+# Сортировка и построение огив и диаграмм размаха
 XH = sort(dat12$Hum); XH
 plot(XH, Y, type= "b", main = "Огива", xlab ="Содержание гумуса", ylab ="Частоты", col ="yellow")
 XP = sort(dat12$PhOx); XP
