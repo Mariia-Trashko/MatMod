@@ -33,6 +33,7 @@ anova(model_lm)
 # Plot weight by group
 # Add error bars: mean_se
 # (other values include: mean_sd, mean_ci, median_iqr, ....)
-# library("ggpubr")
-# ggline(adat, x = " Herbizide ", y = " Yield ", add = c("mean_se", "jitter"))
-
+library("ggplot2")
+library("ggpubr")
+ggline(adat, x = "Herbizide", y = "Yield", add = c("mean_se", "jitter"))
+ggline(adat, x = "Fertilize", y = "Yield", add = c("mean_se", "jitter"))
